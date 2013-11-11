@@ -1,0 +1,13 @@
+<template name="crisis">
+  <div class="crisis {{selected}}">
+    {{#if editing}}
+      <div class="edit">
+        <input class="crisis-name-input" id="crisis-name-input" type="text" value="{{name}}" />
+      </div>
+    {{else}}
+      <div class="display">
+        {{name}}
+      </div>
+    {{/if}}
+  </div>
+</template>

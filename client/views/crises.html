@@ -1,0 +1,16 @@
+<template name="crises">
+  <h1>Crisis Events</h1>
+  {{#if loading}}
+    <!--Replace with spinner-->
+    <div id="crises">Loading...</div>
+  {{else}}
+    <div id="createCrisis">
+      <input type="text" id="new-crisis" placeholder="+ Add crisis event..." />
+    </div>
+    <div id="crises">
+      {{#each crises}}
+        {{> crisis}}
+      {{/each}}
+    </div>
+  {{/if}}
+</template>
