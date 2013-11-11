@@ -1,7 +1,9 @@
 <template name="media">
   <div class="media">   
-    {{#each media}}
-      {{> medium}}
-    {{/each}}
+    {{#with currentCrisis}}
+      {{#each media}}
+        {{> medium}}
+      {{/each}}
+    {{/with}}
   </div>
 </template>

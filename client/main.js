@@ -3,3 +3,4 @@
  */
 
 Meteor.subscribe('crises');
+Meteor.subscribe('media');
