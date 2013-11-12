@@ -1,9 +1,13 @@
 <template name="media">
-  <div class="media">   
-    {{#with currentCrisis}}
-      {{#each media}}
-        {{> medium}}
-      {{/each}}
-    {{/with}}
+  <div class="media">  
+    <table>
+      <tr>
+        {{#each media}}
+          {{position}}
+          <td>{{> medium}}</td>
+          }
+        {{/each}}
+      </tr>
+    </table>
   </div>
 </template>
