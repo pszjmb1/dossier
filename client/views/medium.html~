@@ -6,4 +6,7 @@
     {{#if videoSrc}}<iframe src="{{resource}}" width="400" height="315"></iframe>{{/if}}
 
 
+   
+   
+
 </template> 

@@ -41,7 +41,7 @@ Template.medium.helpers({
    }
 });
 Template.medium.helpers({
-  textSrc: function() {
+  videoSrc: function() {
   mediatype = Media.findOne({resource:""+this}).mediatype;
          if (mediatype == 'html/txt'){
              return mediatype;
