@@ -157,3 +157,21 @@ ul {
 }
 .comments li h4 a { font-size: 12px }
 .comments li p:last-child { margin-bottom: 0 }
+
+/** Sortable lists **/
+ul.multiple_columns {
+  margin: 0 auto;
+  padding: 0;
+}
+#list_wrapper {
+  width: 30%
+}
+ul.multiple_columns li {
+  float: left;
+  list-style: none;
+  height: 30%;
+  width: 25%;
+  padding: 1%;
+  margin:.25%;
+  border-style:dotted;
+}
