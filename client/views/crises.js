@@ -4,7 +4,7 @@
 
 Template.crises.helpers({
   crises: function() {
-      return Crises.find();  
+      return Crises.find({}, {sort: {name: 1}});  
   }
 });
 
