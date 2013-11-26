@@ -1,5 +1,7 @@
 {
   "packages": {
-    "router": {}
+    "router": {},
+    "jquery-ui-sortable": {},
+    "jquery-ui-bootstrap": {}
   }
 }

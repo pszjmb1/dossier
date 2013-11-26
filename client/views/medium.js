@@ -2,53 +2,56 @@
  * Template helpers for a Dossier medium
  */
 
-Template.medium.resource = function () {
- 
-   return Media.findOne({resource:""+this}).resource;
-   
-  
-};
+/**
+ *  Returns a resource from a Media object if it can find one.
+ */
+function getResource(context){
+  item = Media.findOne({resource:""+context.resource});
+  if(item){
+    return item.resource;
+  } else{
+    return null;
+  }
+}
 
+/**
+ *  Returns a mediatype from a Media object if it can find one.
+ */
+function getMediatype(context){
+  item = Media.findOne({resource:""+context.resource});
+  if(item){
+    return item.mediatype;
+  } else{
+    return null;
+  }
+}
 
-
-Template.medium.mediatype = function () {
-
-  return Media.findOne({resource:""+this}).mediatype;
-
-  
-};
-
+/**
+ * Returns the resource from the corresponding Media object to "this"
+ */
+ Template.medium.resource = function () {
+  return getResource(this);
+ };
 
 Template.medium.helpers({
   imageSrc: function() {
-  mediatype = Media.findOne({resource:""+this}).mediatype;
-	if (mediatype == 'image/jpeg' || mediatype == 'image/png'){
-    		return mediatype;
-
-
-      }
-      }
-});
-
-Template.medium.helpers({
+    mediatype = getMediatype(this);
+    if (mediatype == 'image/jpeg' || mediatype == 'image/png'){
+      return mediatype;
+    }
+  },
   videoSrc: function() {
-  mediatype = Media.findOne({resource:""+this}).mediatype;
-         if (mediatype == 'video/fla'){
-             return mediatype;
-
-
-          }
+    mediatype = getMediatype(this);
+    if (mediatype == 'video/fla'){
+     return mediatype;
    }
-});
-Template.medium.helpers({
+ },
   textSrc: function() {
-  mediatype = Media.findOne({resource:""+this}).mediatype;
-         if (mediatype == 'html/txt'){
-             return mediatype;
-
-
-          }
+    mediatype = getMediatype(this);
+    if (mediatype == 'html/txt'){
+     return mediatype;
    }
+ }
 });
 
 

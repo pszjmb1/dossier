@@ -164,13 +164,13 @@ ul.multiple_columns {
   padding: 0;
 }
 #list_wrapper {
-  width: 30%
+  width: 99%
 }
 ul.multiple_columns li {
   float: left;
   list-style: none;
   height: 30%;
-  width: 25%;
+  width: 24%;
   padding: 1%;
   margin:.25%;
   border-style:dotted;

@@ -1,9 +1,12 @@
 <template name="medium">
- <!--<iframe src="{{resource}}"></iframe> -->
-    
-    {{#if imageSrc}}<img src="{{resource}}" width="250" height="200"></img>{{/if}}
-   
-    {{#if videoSrc}}<iframe src="{{resource}}" width="400" height="315"></iframe>{{/if}}
+  <li class="ui-state-default" id="{{resource}}">
+    <!--<iframe src="{{resource}}"></iframe> -->
+    {{#if imageSrc}}
+      <img src="{{resource}}" width="98%" height="98%"></img>
+    {{/if}}
 
-
+    {{#if videoSrc}}
+      <iframe src="{{resource}}" width="98%" height="98%"></iframe>
+    {{/if}}
+  </li>
 </template> 

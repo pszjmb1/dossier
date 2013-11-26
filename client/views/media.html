@@ -3,12 +3,12 @@
     <div id="addMedia">
       <input type="text" id="new-media" placeholder="+ Add media to event. http://www.horizon.ac.uk/AppImages/swoosh_home.png" />
     </div>
-    <table>
-      <tr>
+    <div id="list_wrapper">
+      <ul class="multiple_columns" id="sortable">
         {{#each media}}
-          <td>{{> medium}}</td>
+          {{> medium}}
         {{/each}}
-      </tr>
-    </table>
+      </ul>
+    </div>
   </div>
 </template>

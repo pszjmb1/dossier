@@ -14,7 +14,7 @@ Template.crises.events(okCancelEvents(
   '#new-crisis',
   {
     ok: function (text, evt) {
-      var id = Crises.insert({name: text});
+      var id = Crises.insert({name: text, media: []});
       evt.target.value = "";
       //Todo set route to this id
     }
