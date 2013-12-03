@@ -175,6 +175,4 @@ ul.multiple_columns li {
   margin:.25%;
   border-style:dotted;
 }
-.more-padding-on-right {
-  padding-right: 20px;
-}
+
