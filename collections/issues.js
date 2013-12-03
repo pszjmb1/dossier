@@ -1,9 +1,8 @@
+
+
 /**
- * Dossier media collection
- */
-
-Media = new Meteor.Collection('media');
-
+* Server side function called by client to update Issues.
+*/
 Meteor.methods({
         majreport:function(majreportAttribs) {
                 

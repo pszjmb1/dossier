@@ -28,22 +28,33 @@
 /**
  * Attach events to keydown, keyup, and blur on "New media" input box.
  */
- Template.media.events(okCancelEvents(
-  '#new-media',
-  {
-    ok: function (text, evt) {
+ Template.media.events({
+  
+     'submit form': function(e) {
+        e.preventDefault();
       currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
+      var issue = {
+                        media: $(e.target).find('[name=media]').val(),
+                        mediatype: $(e.target).find('[name=urgency]').val(),
+                  }
+
+
+       Meteor.call('majreport', issue, function(error, id) {
+                        if (error)
+                                throwError(error.reason);
+                        
+                });
       // Add item to Media if one not already added
       //To do automatically generate the corret media type
-      var count = Media.find({resource: text}).count()
+      var count = Media.find({resource:  $(e.target).find('[name=media]').val()}).count()
       if (count === 0)
-        Media.insert({resource: text, mediatype: 'image/jpeg'});
+        Media.insert({resource: $(e.target).find('[name=media]').val(), mediatype: $(e.target).find('[name=urgency]').val()});
 
       // Add item to currentCrisis.media, if not already there
       //Crises.update({_id: currentCrisis._id}, { $addToSet: { media: text } 
       i=0;
       var media = new Array();
-      media.push({order: i++, resource: text});
+      media.push({order: i++, resource: $(e.target).find('[name=media]').val()});
       $( "#sortable" ).children().each(function (){
         media.push({order: i++, resource: this.id});
       });
@@ -51,5 +62,5 @@
 
       evt.target.value = "";
     }
-  }));
+  });
 
