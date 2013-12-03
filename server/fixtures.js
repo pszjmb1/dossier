@@ -1,83 +1,98 @@
 /**
- * Server fixture data for Dossier
+ * Server fixture data for Majority Report
  */
 
- if (Crises.find().count() === 0) {
-   Crises.insert({
-    name: 'Tsunami',
-    media: [{
-      resource: 'http://images.nationalgeographic.com/wpf/media-live/photos/000/332/cache/japan-earthquake-tsunami-nuclear-unforgettable-pictures-wave_33291_600x450.jpg', order:3
-    }, {
-      resource:'http://i.dailymail.co.uk/i/pix/2011/03/15/article-0-0B2D7C2600000578-689_964x641.jpg', order:1
-    }, {
-      resource:'http://toronto.ctvnews.ca/polopoly_fs/1.1232514!/httpImage/image.jpg_gen/derivatives/landscape_960/image.jpg', order:2
-    }, {
-      resource: 'http://www.nce.co.uk/pictures/586xAny/8/4/1/1212841_dfg.jpg', order:0
-    }]
+ /**
+  * Convinience function for inserting provenance records into DB and returning their IDs
+  */
+  function insertProv(){
+    return Provenance.insert({
+            "entity": { // Map of entities by entities' IDs
+          },
+          "activity": { // Map of activities by IDs
+          },
+          "agent": { // Map of agents by IDs
+          },
+         // <relationName>: { // A map of relations of type relationName by their IDs
+         // },
+          //...
+          "bundle": { // Map of named bundles by IDs
+          }
+        } );
+  }
 
+  if (Crises.find().count() === 0) {
+  //Death of Ian Tomlinso (IT) is the canonical example. The other examples are currently left for posterity until system updates taking in the IT structure are completed. Todo: remove or convert the others.
+  Crises.insert({
+    name: 'Death of Ian Tomlinson',
+    dossier:{
+      media: [{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg', order:0
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg', order:1
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_as_he_fell_2.jpg', order:2
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg', order:3
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg', order:4
+      }]      
+    },
+    provenance:insertProv(),
+      // Based on ideas from http://www4.ncsu.edu/~abaikad/narreme-proposal-compressed.pdf
+      //Note this allows us to capture the narrative (fabula), but not the syuzhet
+      narrative:{
+        axes:{},
+        narremes: [{
+          title:null,
+          axis_states:[{axis:null, level:null}],
+          media:[],
+          attributes:[] // using denormalised version for convinience
+        }],
+        relations: [{
+          narreme1:null, narreme2:null, type: "temporal", parameters:[], media:[]
+        },{
+          narreme1:null, narreme2:null, type: "causal", parameters:[], media:[]
+        },{
+          narreme1:null, narreme2:null, type: "intentional", parameters:[], media:[]
+        }],
+        provenance:insertProv()
+      }
+    });
+
+
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
+  mediatype: 'image/jpeg',
+  provenance:insertProv(),
+    attributes:[] // using denormalised version for convinience
   });
 
-   Crises.insert({
-    name: 'Explosion',
-    media: [
-    {
-      resource: 'http://www.youtube.com/embed/XGSy3_Czz8k', order:1
-    }, {
-      resource: 'http://www.nce.co.uk/pictures/586xAny/8/4/1/1212841_dfg.jpg', order:2
-    }, {
-      resource: 'http://www.worldwildlife.org/who/index.html', order:3
-    }]
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg',
+  mediatype: 'image/jpeg',
+  provenance:insertProv(),
+    attributes:[] // using denormalised version for convinience    
   });
 
-   Crises.insert({
-    name: 'Catastrophic data loss',
-    media: [{
-      resource: 'http://www.codinghorror.com/blog/2009/12/our-disaster-recovery-plan.png', order:1
-    }, {
-      resource: 'http://ctmalaga.com.au/wp-content/uploads/2013/01/Lostdata-448x205.jpg', order:0
-    }, {
-      resource: 'http://www.nce.co.uk/pictures/586xAny/8/4/1/1212841_dfg.jpg', order:2
-    }]
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_as_he_fell_2.jpg',
+  mediatype: 'image/jpeg',
+  provenance:insertProv(),
+    attributes:[] // using denormalised version for convinience    
   });
 
-   Media.insert({
-    resource: 'http://images.nationalgeographic.com/wpf/media-live/photos/000/332/cache/japan-earthquake-tsunami-nuclear-unforgettable-pictures-wave_33291_600x450.jpg',
-    mediatype: 'image/jpeg'    
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg',
+  mediatype: 'image/jpeg',
+  provenance:insertProv(),
+    attributes:[] // using denormalised version for convinience   
   });
 
-   Media.insert({
-    resource: 'http://www.youtube.com/embed/XGSy3_Czz8k',
-    mediatype: 'video/fla'    
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg',
+  mediatype: 'image/jpeg',
+  provenance:insertProv(),
+    attributes:[] // using denormalised version for convinience     
   });
-
-
-   Media.insert({
-    resource: 'http://i.dailymail.co.uk/i/pix/2011/03/15/article-0-0B2D7C2600000578-689_964x641.jpg',
-    mediatype: 'image/jpeg'    
-  });
-
-   Media.insert({
-    resource: 'http://www.youtube.com/embed/XGSy3_Czz8k',
-    mediatype: 'image/jpeg'    
-  });
-
-   Media.insert({
-    resource: 'http://www.nce.co.uk/pictures/586xAny/8/4/1/1212841_dfg.jpg',
-    mediatype: 'image/jpeg'    
-  });
-
-   Media.insert({
-    resource: 'http://www.codinghorror.com/blog/2009/12/our-disaster-recovery-plan.png',
-    mediatype: 'image/jpeg'    
-  });
-
-   Media.insert({
-    resource: 'http://www.worldwildlife.org/who/index.html',
-    mediatype: 'html/txt'    
-  });
-
-   Media.insert({
-    resource: 'http://toronto.ctvnews.ca/polopoly_fs/1.1232514!/httpImage/image.jpg_gen/derivatives/landscape_960/image.jpg',
-    mediatype: 'image/jpeg'     
-  });
- }
+}
