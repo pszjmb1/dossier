@@ -1,6 +1,6 @@
 Dossier
 =======
-Crowdsourced crisis management demo client/server application
+Crowdsourced crisis management application. See [our wiki](https://github.com/pszjmb1/dossier/wiki) for more information.
 
 Installation and running locally
 ------------
