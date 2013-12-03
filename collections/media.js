@@ -4,7 +4,7 @@
 
 Media = new Meteor.Collection('media');
 
-Meteor.methods({
+/*Meteor.methods({
         majreport:function(majreportAttribs) {
                 
                 if (!majreportAttribs.media)
@@ -14,4 +14,4 @@ Meteor.methods({
                 
                 
         }
-});
+});*/

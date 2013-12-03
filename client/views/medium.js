@@ -5,7 +5,7 @@
 /**
  *  Returns a resource from a Media object if it can find one.
  */
-function getResource(context){
+ function getResource(context){
   item = Media.findOne({resource:""+context.resource});
   if(item){
     return item.resource;
@@ -17,7 +17,7 @@ function getResource(context){
 /**
  *  Returns a mediatype from a Media object if it can find one.
  */
-function getMediatype(context){
+ function getMediatype(context){
   item = Media.findOne({resource:""+context.resource});
   if(item){
     return item.mediatype;
@@ -31,7 +31,22 @@ function getMediatype(context){
  */
  Template.medium.resource = function () {
   return getResource(this);
- };
+};
+
+/**
+ * Returns the short description attribute of the "this" medium
+ */
+ Template.medium.shortdesc = function () {
+  item = Media.findOne({resource:""+this.resource});
+  if(item){
+    //console.log(item.attributes);
+    var res = $.grep(item.attributes, function(e){return e.shortdesc});
+    //If there is one or multiple short descriptions, use the first one
+    if(res[0]){
+      return res[0].shortdesc;
+    }
+  }
+};
 
 Template.medium.helpers({
   imageSrc: function() {
@@ -46,12 +61,12 @@ Template.medium.helpers({
      return mediatype;
    }
  },
-  textSrc: function() {
-    mediatype = getMediatype(this);
-    if (mediatype == 'html/txt'){
-     return mediatype;
-   }
+ textSrc: function() {
+  mediatype = getMediatype(this);
+  if (mediatype == 'html/txt'){
+   return mediatype;
  }
+}
 });
 
 

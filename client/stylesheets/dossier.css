@@ -2,7 +2,7 @@
  * Main CSS file for Dossier
  */
 
-* {
+ * {
     padding: 0;
     margin: 0;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; 
@@ -177,4 +177,10 @@ ul.multiple_columns li {
 }
 .more-padding-on-right {
   padding-right: 20px;
+}
+
+.medium_short_desc{
+  padding-top: 5%;    
+  font-size: medium;    
+  text-align: center;
 }
