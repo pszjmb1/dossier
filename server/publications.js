@@ -15,3 +15,10 @@ Meteor.publish('crises', function() {
 Meteor.publish('media', function() {
   return Media.find();
 });
+
+/**
+ * For now publish all Provenance info
+ */
+Meteor.publish('provenance', function() {
+  return Provenance.find();
+});
