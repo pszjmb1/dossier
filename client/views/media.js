@@ -33,17 +33,7 @@
      'submit form': function(e) {
         e.preventDefault();
       currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
-      var issue = {
-                        media: $(e.target).find('[name=media]').val(),
-                        mediatype: $(e.target).find('[name=urgency]').val(),
-                  }
-
-
-       Meteor.call('majreport', issue, function(error, id) {
-                        if (error)
-                                throwError(error.reason);
-                        
-                });
+      
       // Add item to Media if one not already added
       //To do automatically generate the corret media type
       var count = Media.find({resource:  $(e.target).find('[name=media]').val()}).count()

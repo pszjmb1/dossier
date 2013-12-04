@@ -9,7 +9,12 @@
     {{/if}}
 
    {{#if textSrc}}
-      <div class="medium_html">{{resource}}</div>
+     {{resource}}
    {{/if}}
+
+   {{#if audioSrc}}
+      <a href="{{resource}}">Play the sound</a>
+   {{/if}}
+ 
   </li>
 </template> 

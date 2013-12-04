@@ -36,19 +36,25 @@ function getMediatype(context){
 Template.medium.helpers({
   imageSrc: function() {
     mediatype = getMediatype(this);
-    if (mediatype == 'image/jpeg' || mediatype == 'image/png'){
+    if (mediatype == 'image/jpeg' || mediatype == 'image/png' || mediatype == 'image/gif'){
       return mediatype;
     }
   },
   videoSrc: function() {
     mediatype = getMediatype(this);
-    if (mediatype == 'video/fla'){
+    if (mediatype == 'video/fla' || mediatype == 'video/flv'){
      return mediatype;
    }
  },
   textSrc: function() {
     mediatype = getMediatype(this);
-    if (mediatype == 'html/txt'){
+    if (mediatype == 'text/html'){
+     return mediatype;
+   }
+ },
+  audioSrc: function() {
+    mediatype = getMediatype(this);
+    if (mediatype == 'audio/mpeg' || mediatype == 'audio/ogg' || mediatype == 'audio/wav' ){
      return mediatype;
    }
  }
