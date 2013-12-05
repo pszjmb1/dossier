@@ -60,9 +60,6 @@ Template.medium.events({
     var fragment = Meteor.render( function() {
       return Template[ templateName ](); 
     });
-/*
-    $("#showAttribsBtn").append('<div id="dialog" title="' + resname + '">').html(fragment).append('</div>');
-    $( "#dialog" ).dialog();*/
 
     var tableHead = '<table class="attrib-table"><thead><tr><th>Type</th><th>Value</th></tr></thead>';
 
@@ -92,6 +89,23 @@ Template.attribute.value = function () {
   //return this.key;
 };
 
+ Template.attributes.events({
+   'click #submit': function(e) {
+    e.preventDefault();
+    var medium  = Media.findOne({resource:""+ 
+      Session.get('currentMediaItemId') });
+
+    var type = $('#new-attrib-type').val();
+    var val = $('#new-attrib-value').val();
+    console.log("a: " + type + val);
+    var pushModifier = { $push: {} };
+    pushModifier.$push = {attributes: {}};
+    pushModifier.$push.attributes[''+type]=val;
+
+
+    Media.update( {_id: medium._id}, pushModifier);
+   }
+ });
 /** End Attributes **/
 
 
