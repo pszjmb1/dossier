@@ -10,20 +10,23 @@
 });
 
  Template.media.rendered = function() {
-  $('.sortable').sortable();
-  /*$( "#sortable" ).sortable({ cursor: "move", delay: 50, opacity: 0.5,
-    revert: 125, scroll: true,
-    update: function( event, ui ) {
-      currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
-      i=0;
-      var media = new Array();
-      $( "#sortable" ).children().each(function (){
+  //$('.sortable').sortable();
+  //{ cursor: "move", delay: 50, opacity: 0.5, revert: 125, scroll: true,
+  $( ".sortable" ).sortable();
+  $(".sortable" ).on('dragend.h5s', function(event){ 
+    currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
+    i=0;
+    var media = new Array();
+    var firstId = 0;
+    $( ".sortable" ).children().each(function (){
+      if(this.id){
         media.push({order: i++, resource: this.id});
-      });
-      Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
-    }
-  });*/
-  $( ".sortable" ).disableSelection();
+      }
+    });
+    Crises.update( 
+      {_id: currentCrisis._id}, { $set: {'dossier.media': media}}, function(err, num){console.log(err);console.log(num);}
+    );
+  });
 };
 
 /**
