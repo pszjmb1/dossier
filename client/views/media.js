@@ -56,11 +56,11 @@
         i=0;
         var media = new Array();
         media.push({order: i++, resource: $(e.target).find('[name=media]').val()});
-        $( "#sortable" ).children().each(function (){
+        $( ".sortable" ).children().each(function (){
           media.push({order: i++, resource: this.id});
         });
         Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
 
-        evt.target.value = "";
+        e.target.value = "";
       }
     });
