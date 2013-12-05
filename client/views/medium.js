@@ -38,7 +38,7 @@
  */
  Template.medium.shortdesc = function () {
   item = Media.findOne({resource:""+this.resource});
-  if(item){
+  if(item && item.attributes){
     //console.log(item.attributes);
     var res = $.grep(item.attributes, function(e){return e.shortdesc});
     //If there is one or multiple short descriptions, use the first one
