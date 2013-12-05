@@ -10,7 +10,8 @@
 });
 
  Template.media.rendered = function() {
-  $( "#sortable" ).sortable({ cursor: "move", delay: 50, opacity: 0.5,
+  $('.sortable').sortable();
+  /*$( "#sortable" ).sortable({ cursor: "move", delay: 50, opacity: 0.5,
     revert: 125, scroll: true,
     update: function( event, ui ) {
       currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
@@ -21,29 +22,28 @@
       });
       Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
     }
-  });
-  $( "#sortable" ).disableSelection();
+  });*/
+  $( ".sortable" ).disableSelection();
 };
 
 /**
  * Attach events to keydown, keyup, and blur on "New media" input box.
  */
  Template.media.events({
-  
-     'submit form': function(e) {
-        e.preventDefault();
-      currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
-      var issue = {
-                        media: $(e.target).find('[name=media]').val(),
-                        mediatype: $(e.target).find('[name=urgency]').val(),
-                  }
+   'submit form': function(e) {
+    e.preventDefault();
+    currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
+    var issue = {
+      media: $(e.target).find('[name=media]').val(),
+      mediatype: $(e.target).find('[name=urgency]').val(),
+    }
 
 
-       Meteor.call('majreport', issue, function(error, id) {
-                        if (error)
-                                throwError(error.reason);
-                        
-                });
+    Meteor.call('majreport', issue, function(error, id) {
+      if (error)
+        throwError(error.reason);
+
+    });
       // Add item to Media if one not already added
       //To do automatically generate the corret media type
       var count = Media.find({resource:  $(e.target).find('[name=media]').val()}).count()
@@ -52,15 +52,15 @@
 
       // Add item to currentCrisis.media, if not already there
       //Crises.update({_id: currentCrisis._id}, { $addToSet: { media: text } 
-      i=0;
-      var media = new Array();
-      media.push({order: i++, resource: $(e.target).find('[name=media]').val()});
-      $( "#sortable" ).children().each(function (){
-        media.push({order: i++, resource: this.id});
-      });
-      Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
+        i=0;
+        var media = new Array();
+        media.push({order: i++, resource: $(e.target).find('[name=media]').val()});
+        $( "#sortable" ).children().each(function (){
+          media.push({order: i++, resource: this.id});
+        });
+        Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
 
-      evt.target.value = "";
-    }
-  });
+        evt.target.value = "";
+      }
+    });
 

@@ -1,0 +1,8 @@
+{
+  "name": "HTML5-Sortable",
+  "description": "HTML5 Sortable is a non-jquery-ui based jQuery plugin to create sortable lists and grids using native HTML5 drag and drop API. See http://farhadi.ir/projects/html5sortable/ for more detatils.",
+  "homepage": "https://github.com/pszjmb1/meteor-html5-sortable",
+  "author": "Jesse Blum <jesse.blum@nottingham.ac.uk>",
+  "version": "1.0.0",
+  "git": "https://github.com/pszjmb1/meteor-html5-sortable"
+}

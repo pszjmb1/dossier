@@ -159,22 +159,39 @@ ul {
 .comments li p:last-child { margin-bottom: 0 }
 
 /** Sortable lists **/
-ul.multiple_columns {
-  margin: 0 auto;
+.sortable{
+  margin: auto;
   padding: 0;
+  width: 98%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sortable.grid {
+  overflow: hidden;
 }
 #list_wrapper {
   width: 99%
 }
-ul.multiple_columns li {
-  float: left;
+.sortable li {
   list-style: none;
+  border: 1px dotted #CCC;
+  background: #F6F6F6;
+  font-family: "Tahoma";
+  color: #1C94C4;
+  margin: .25%;
+  padding: .5%;
   height: 30%;
-  width: 24%;
-  padding: 1%;
-  margin:.25%;
-  border-style:dotted;
+  line-height: 100%;
+  float: left;
+  width: 18%;
+  text-align: center;
 }
+
 .more-padding-on-right {
   padding-right: 20px;
 }
@@ -183,4 +200,9 @@ ul.multiple_columns li {
   padding-top: 5%;    
   font-size: medium;    
   text-align: center;
+}
+
+.sortImg {
+  max-width:100%; 
+  height: 40%;
 }

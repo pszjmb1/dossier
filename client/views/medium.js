@@ -46,7 +46,17 @@
       return res[0].shortdesc;
     }
   }
+  return "Add description";
 };
+
+
+Template.medium.events({
+  'click #showAttribsBtn': function() {
+    console.log('here');
+    $("#showAttribsBtn").append('<div id="dialog" title="Basic dialog"> <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the x icon.</p></div>');
+    $( "#dialog" ).dialog();
+  }
+});
 
 Template.medium.helpers({
   imageSrc: function() {

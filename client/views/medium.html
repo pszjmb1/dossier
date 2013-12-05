@@ -1,17 +1,23 @@
 <template name="medium">
   <li class="ui-state-default" id="{{resource}}">
     {{#if imageSrc}}
-      <img src="{{resource}}" width="98%" height="98%"></img>
+    <img src="{{resource}}" class="sortImg"></img>
     {{/if}}
 
     {{#if videoSrc}}
-      <iframe src="{{resource}}" width="98%" height="98%"></iframe>
+    <iframe src="{{resource}}" class="sortImg"></iframe>
     {{/if}}
 
-   {{#if textSrc}}
-      <div class="medium_html">{{resource}}</div>
-   {{/if}}
+    {{#if textSrc}}
+    <div class="medium_html">{{resource}}</div>
+    {{/if}}
 
-   <div class="medium_short_desc">{{shortdesc}}</div>
+    <div class="medium_short_desc">{{shortdesc}}</div>
+  
+    <div id="showAttribsBtn">
+      <a href="#" style="padding-top: 5%; float: right; text-decoration: underline;">Attributes</a>      
+      <!--<input type="button" value="Attributes" class="btn btn-secondary" style="float: right;"/>-->
+      
+    </div>
   </li>
 </template> 

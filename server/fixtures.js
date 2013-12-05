@@ -36,6 +36,16 @@
         resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg', order:3
       },{
         resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg', order:4
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg', order:0
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg', order:1
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_as_he_fell_2.jpg', order:2
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg', order:3
+      },{
+        resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg', order:4
       }]      
     },
     provenance:insertProv(),
