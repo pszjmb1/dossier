@@ -21,8 +21,38 @@
     </div>
 
     {{#if audioSrc}}
-      <a href="{{resource}}">Play the sound</a>
+    <a href="{{resource}}">Play the sound</a>
     {{/if}}
 
   </li>
 </template> 
+
+<template name="attributes">
+  <div id="createAttrib">
+    <input type="text" id="new-attrib-type" placeholder="+ Attribute type..." />
+    <input type="text" id="new-attrib-type" placeholder="+ Attribute value..." />
+    <input type="submit" value="Add Attribute" class="btn btn-secondary"/>
+  </div>
+  <table class="attrib-table">
+      <tr>
+        <th>Type</th>
+        <th>Value</th>
+      </tr>
+    {{#if loading}}
+      <!--Replace with spinner-->
+      <div id="attribs">Loading...</div>
+    {{else}}
+      {{#each attributes}}
+        {{> attribute}}
+      {{/each}}
+      </table>
+  {{/if}}
+</template>
+
+<template name="attribute">
+      <tr>
+        <td>{{type}}</td>
+        <td>{{value}}</td>
+      </tr>
+</template>
+

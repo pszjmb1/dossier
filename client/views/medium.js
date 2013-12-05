@@ -52,11 +52,48 @@
 
 Template.medium.events({
   'click #showAttribsBtn': function() {
-    console.log('here');
-    $("#showAttribsBtn").append('<div id="dialog" title="Basic dialog"> <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the x icon.</p></div>');
-    $( "#dialog" ).dialog();
+    Session.set('currentMediaItemId', this.resource);
+    var path = this.resource.split("/");
+    var resname = path[path.length - 1];
+    // this returns the HTML for the attributes template.
+    var templateName = "attributes";
+    var fragment = Meteor.render( function() {
+      return Template[ templateName ](); 
+    });
+/*
+    $("#showAttribsBtn").append('<div id="dialog" title="' + resname + '">').html(fragment).append('</div>');
+    $( "#dialog" ).dialog();*/
+
+    var tableHead = '<table class="attrib-table"><thead><tr><th>Type</th><th>Value</th></tr></thead>';
+
+    $("#showAttribsBtn").append('<div id="dialog" title="' + resname + '"></div>');// + tableHead + '</table></div>');
+    $( "#dialog" ).dialog().append(fragment);
   }
 });
+
+/** Attributes **/
+
+
+Template.attributes.helpers({
+  attributes: function() {
+    return Media.findOne({resource:""+ 
+      Session.get('currentMediaItemId') }).attributes;
+  }
+});
+
+
+Template.attribute.type = function () {
+  return Object.getOwnPropertyNames(this)[0];
+};
+
+
+Template.attribute.value = function () {
+  return this[Object.getOwnPropertyNames(this)[0]];
+  //return this.key;
+};
+
+/** End Attributes **/
+
 
 Template.medium.helpers({
   imageSrc: function() {
@@ -75,14 +112,14 @@ Template.medium.helpers({
   mediatype = getMediatype(this);
   if (mediatype == 'text/html'){
    return mediatype;
-   }
- },
-  audioSrc: function() {
-    mediatype = getMediatype(this);
-    if (mediatype == 'audio/mpeg' || mediatype == 'audio/ogg' || mediatype == 'audio/wav' ){
-     return mediatype;
-   }
  }
+},
+audioSrc: function() {
+  mediatype = getMediatype(this);
+  if (mediatype == 'audio/mpeg' || mediatype == 'audio/ogg' || mediatype == 'audio/wav' ){
+   return mediatype;
+ }
+}
 });
 
 

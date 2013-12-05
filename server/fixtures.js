@@ -65,7 +65,7 @@ Media.insert({
   resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
   mediatype: 'image/jpeg',
   provenance:insertProv(),
-    attributes:[{shortdesc:'Hello world!'}] // using denormalised version for convinience
+    attributes:[{shortdesc:'Hello world!'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
   });
 
 Media.insert({
