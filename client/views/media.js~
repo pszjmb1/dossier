@@ -5,7 +5,7 @@
  Template.media.helpers({
   media: function() {
     currentCrisis = Crises.findOne(Session.get('currentCrisisId'));     
-    return currentCrisis.media.sort(function(a,b){ return a.order - b.order})
+    return currentCrisis.dossier.media.sort(function(a,b){ return a.order - b.order})
   }
 });
 
@@ -19,7 +19,7 @@
       $( "#sortable" ).children().each(function (){
         media.push({order: i++, resource: this.id});
       });
-      Crises.update( {_id: currentCrisis._id}, { $set: {'media': media}});
+      Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
     }
   });
   $( "#sortable" ).disableSelection();
@@ -58,7 +58,7 @@
       $( "#sortable" ).children().each(function (){
         media.push({order: i++, resource: this.id});
       });
-      Crises.update( {_id: currentCrisis._id}, { $set: {'media': media}});
+      Crises.update( {_id: currentCrisis._id}, { $set: {'dossier.media': media}});
 
       evt.target.value = "";
     }

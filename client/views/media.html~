@@ -5,7 +5,7 @@
 <table border="0">
 <tr>
     <td class="more-padding-on-right">  
-    <input type="text" name="media" placeholder="+ Add media to event. http://www.horizon.ac.uk/AppImages/swoosh_home.png" value="" /> </td>
+    <input type="text" name="media" placeholder="+ Add media to event. http://www.horizon.ac.uk/AppImages/swoosh_home.png" /> </td>
       
     
      <td class="more-padding-on-right">
@@ -17,6 +17,9 @@
               <option value="image/gif">image/gif</option>
               <option value="video/flv">video/flv</option>
               <option value="video/fla">video/fla</option>
+              <option value="audio/mpeg">audio/mpeg</option>
+              <option value="audio/ogg">audio/ogg</option>
+              <option value="audio/wav">audio/wav</option>
               <option value="text/html">text/html</option>
            </select>                             
       </td>

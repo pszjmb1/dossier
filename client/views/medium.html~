@@ -1,6 +1,5 @@
 <template name="medium">
   <li class="ui-state-default" id="{{resource}}">
-    <!--<iframe src="{{resource}}"></iframe> -->
     {{#if imageSrc}}
       <img src="{{resource}}" width="98%" height="98%"></img>
     {{/if}}
@@ -10,7 +9,12 @@
     {{/if}}
 
    {{#if textSrc}}
-      <div class="medium_html">{{resource}}</div>
+     {{resource}}
    {{/if}}
+
+   {{#if audioSrc}}
+      <a href="{{resource}}">Play the sound</a>
+   {{/if}}
+ 
   </li>
 </template> 

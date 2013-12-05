@@ -25,7 +25,7 @@
     });
     Crises.update( 
       {_id: currentCrisis._id}, { $set: {'dossier.media': media}}, function(err, num){console.log(err);console.log(num);}
-    );
+      );
   });
 };
 
@@ -41,11 +41,9 @@
       mediatype: $(e.target).find('[name=urgency]').val(),
     }
 
-
     Meteor.call('majreport', issue, function(error, id) {
       if (error)
         throwError(error.reason);
-
     });
       // Add item to Media if one not already added
       //To do automatically generate the corret media type
@@ -66,4 +64,3 @@
         evt.target.value = "";
       }
     });
-

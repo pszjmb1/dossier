@@ -13,11 +13,16 @@
     {{/if}}
 
     <div class="medium_short_desc">{{shortdesc}}</div>
-  
+
     <div id="showAttribsBtn">
       <a href="#" style="padding-top: 5%; float: right; text-decoration: underline;">Attributes</a>      
       <!--<input type="button" value="Attributes" class="btn btn-secondary" style="float: right;"/>-->
       
     </div>
+
+    {{#if audioSrc}}
+      <a href="{{resource}}">Play the sound</a>
+    {{/if}}
+
   </li>
 </template> 
