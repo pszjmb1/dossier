@@ -14,6 +14,7 @@
   //{ cursor: "move", delay: 50, opacity: 0.5, revert: 125, scroll: true,
   $( ".sortable" ).sortable();
   $(".sortable" ).on('dragend.h5s', function(event){ 
+    console.log('here');
     currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
     i=0;
     var media = new Array();
