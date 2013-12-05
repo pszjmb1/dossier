@@ -202,7 +202,9 @@ ul {
   text-align: center;
 }
 
-.sortImg {
-  max-width:100%; 
-  height: 40%;
+.sortImg { 
+  width: auto;
+  max-width: 80%;
+  height: auto;
+  max-height: 70px;
 }
