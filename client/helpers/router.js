@@ -5,6 +5,7 @@
 
 Meteor.Router.add({
   '/': 'home',
+  '/crisis': 'home',
   '/crisis/:_id': {
     to: 'crisisMedia',
     and: function(id) { Session.set('currentCrisisId', id); }  

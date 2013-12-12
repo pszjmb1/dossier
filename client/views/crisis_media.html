@@ -1,5 +1,26 @@
 <template name="crisisMedia">
-  {{#with currentCrisis}}
-    {{> media}}
-  {{/with}}
+  <form>
+    <input type="radio" id="radionarrativeview" name="reportview" value="narrative">
+    <label for="radionarrativeview">Narrative</label>
+    <input type="radio" id="radiomediaview" name="reportview" value="media" checked="checked">
+    <label for="radiomediaview">Media</label>
+    <input type="radio" id="radiomapview" name="reportview" value="map">
+    <label for="radiomapview">Map</label>
+    <input type="radio" id="radiotimelineview" name="reportview" value="timeline">
+    <label for="radiotimelineview">Timeline</label>
+  </form>
+  {{#if mediaview}}
+    {{#with currentCrisis}}
+      {{> media}}
+    {{/with}}
+  {{/if}}
+  {{#if narrativeview}}
+    <h1>Narrative view</h1>
+  {{/if}}
+  {{#if mapview}}
+    <h1>Map view</h1>
+  {{/if}}
+  {{#if timelineview}}
+    <h1>Timeline view</h1>
+  {{/if}}
 </template>

@@ -1,6 +1,5 @@
 {
   "packages": {
-    "router": {},
-    "jquery-ui-bootstrap": {}
+    "router": {}
   }
 }

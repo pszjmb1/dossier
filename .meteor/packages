@@ -8,6 +8,4 @@ insecure
 preserve-inputs
 bootstrap
 router
-jquery-ui-bootstrap
-jquery-ui
 html5sortable
