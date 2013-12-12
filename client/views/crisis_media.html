@@ -9,18 +9,22 @@
     <input type="radio" id="radiotimelineview" name="reportview" value="timeline">
     <label for="radiotimelineview">Timeline</label>
   </form>
-  {{#if mediaview}}
-    {{#with currentCrisis}}
+  <div id="view">
+    {{#if mediaview}}
+      {{#with currentCrisis}}
       {{> media}}
-    {{/with}}
-  {{/if}}
-  {{#if narrativeview}}
-    <h1>Narrative view</h1>
-  {{/if}}
-  {{#if mapview}}
-    <h1>Map view</h1>
-  {{/if}}
-  {{#if timelineview}}
-    <h1>Timeline view</h1>
-  {{/if}}
+      {{/with}}
+    {{/if}}
+    {{#if narrativeview}}
+      {{#with currentCrisis}}
+      {{> narrative}}
+      {{/with}}
+    {{/if}}
+    {{#if mapview}}
+      <h1>Map view</h1>
+    {{/if}}
+    {{#if timelineview}}
+      <h1>Timeline view</h1>
+    {{/if}}
+  </div>
 </template>
