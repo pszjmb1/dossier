@@ -46,13 +46,33 @@ ul {
 }
 #side-pane {
   width: 18%;
-  border-right: 1px solid #999;
+  /*border-right: 1px solid #999;*/
+
+
+  /* fallback */
+  background-color: rgb(238,238,238);
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, left top, right top, from(white), to(rgb(238,238,238)));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, rgb(230,230,230), rgb(210,210,210));
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, rgb(230,230,230), rgb(210,210,210));
+
+  /* IE 10 */
+  background: -ms-linear-gradient(left, rgb(230,230,230), rgb(210,210,210));
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, rgb(230,230,230), rgb(210,210,210));
+
 }
 #main {
-  margin-left: 18%;
+  margin-left: 18.25%;
   padding-left: 1%;
   width: 73%;
   background: #fff;
+  margin-bottom:0;
 }
 
 .navbar { margin-bottom: 10px }
@@ -228,9 +248,7 @@ input[type=radio] + label
 
   /* Gradient background
   /* fallback */
-  background-color: #1a82f7;
-  background: url(images/linear_bg_2.png);
-  background-repeat: repeat-x;
+  background-color: rgb(238,238,238);
 
   /* Safari 4-5, Chrome 1-9 */
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(rgb(238,238,238)));
