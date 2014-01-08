@@ -44,13 +44,20 @@
       narrative:{
         axes:{},
         narremes: [{
-          title:null,
+          id:"nar_1",
+          title:"There once was a man named Ian Tomlinson.",
+          axis_states:[{axis:null, level:null}],
+          media:[],
+          attributes:[] // using denormalised version for convinience
+        },{
+          id:"nar_2",
+          title:"Ian Tomlinson was struck over the head by a police officer.",
           axis_states:[{axis:null, level:null}],
           media:[],
           attributes:[] // using denormalised version for convinience
         }],
         relations: [{
-          narreme1:null, narreme2:null, type: "temporal", parameters:[], media:[]
+          narreme1:"nar_1", narreme2:"nar_2", type: "temporal", parameters:[], media:[]
         },{
           narreme1:null, narreme2:null, type: "causal", parameters:[], media:[]
         },{
@@ -65,7 +72,7 @@ Media.insert({
   resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
   mediatype: 'image/jpeg',
   provenance:insertProv(),
-    attributes:[{shortdesc:'Hello world!'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
+    attributes:[{shortdesc:'Once upon a time there was a man named Ian Tomlinson.'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
   });
 
 Media.insert({
