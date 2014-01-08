@@ -39,7 +39,7 @@
     currentCrisis = Crises.findOne(Session.get('currentCrisisId'));
     var issue = {
       media: $(e.target).find('[name=media]').val(),
-      mediatype: $(e.target).find('[name=urgency]').val(),
+      mediatype: $(e.target).find('[name=mediatypes]').val(),
     }
 
     Meteor.call('majreport', issue, function(error, id) {
@@ -50,7 +50,7 @@
       //To do automatically generate the corret media type
       var count = Media.find({resource:  $(e.target).find('[name=media]').val()}).count()
       if (count === 0)
-        Media.insert({resource: $(e.target).find('[name=media]').val(), mediatype: $(e.target).find('[name=urgency]').val()});
+        Media.insert({resource: $(e.target).find('[name=media]').val(), mediatype: $(e.target).find('[name=mediatypes]').val()});
 
       // Add item to currentCrisis.media, if not already there
       //Crises.update({_id: currentCrisis._id}, { $addToSet: { media: text } 

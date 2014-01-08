@@ -16,9 +16,31 @@ Template.crises.events(okCancelEvents(
     ok: function (text, evt) {
       var id = Crises.insert({
           name: text, 
-          dossier:{ media: [{}] }
+          dossier:{ media: [{}] },provenance:insertProv()
         });
       evt.target.value = "";
       //Todo set route to this id
     }
   }));
+
+
+/**
+  * Convinience function for inserting provenance records into DB and returning their IDs
+  */
+  function insertProv(){
+    return Provenance.insert({
+            "entity": { // Map of entities by entities' IDs
+          },
+          "activity": { // Map of activities by IDs
+          },
+          "agent": { // Map of agents by IDs
+          },
+         // <relationName>: { // A map of relations of type relationName by their IDs
+         // },
+          //...
+          "bundle": { // Map of named bundles by IDs
+          }
+        } );
+  }
+
+ 
