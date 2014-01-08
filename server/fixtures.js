@@ -57,7 +57,7 @@
           attributes:[] // using denormalised version for convinience
         }],
         relations: [{
-          narreme1:null, narreme2:null, type: "temporal", parameters:[], media:[]
+          narreme1:"nar_1", narreme2:"nar_2", type: "temporal", parameters:[], media:[]
         },{
           narreme1:null, narreme2:null, type: "causal", parameters:[], media:[]
         },{
