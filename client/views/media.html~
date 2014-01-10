@@ -5,7 +5,7 @@
 <table border="0">
 <tr>
     <td class="more-padding-on-right">  
-    <input type="text" name="media" placeholder="+ Add media to event. http://www.horizon.ac.uk/AppImages/swoosh_home.png" /> </td>
+    <input type="text" name="media" placeholder="+ Add media to event. http://www.horizon.ac.uk/AppImages/swoosh_home.png" value="" /> </td>
       
     
      <td class="more-padding-on-right">
@@ -32,7 +32,7 @@
     </div>
    </form>
     <div id="list_wrapper">
-      <ul class="multiple_columns" id="sortable">
+      <ul class="sortable grid">
         {{#each media}}
           {{> medium}}
         {{/each}}
