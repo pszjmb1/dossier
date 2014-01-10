@@ -16,9 +16,9 @@ Template.crises.events(okCancelEvents(
     ok: function (text, evt) {
       var id = Crises.insert({
           name: text, 
-          dossier:{ media: [{}] }
+          dossier:{ media: [] }
         });
       evt.target.value = "";
-      //Todo set route to this id
+      Meteor.Router.to('/crisis/' + id);
     }
   }));
