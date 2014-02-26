@@ -24,7 +24,9 @@
       <h1>Map view</h1>
     {{/if}}
     {{#if timelineview}}
-      <h1>Timeline view</h1>
+      {{#with currentCrisis}}
+        {{> timeline}}
+      {{/with}}
     {{/if}}
   </div>
 </template>
