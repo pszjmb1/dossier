@@ -3,11 +3,74 @@
     <div id="mapcontainer" class="mapcontainer">
       {{#if mapApiKey}}      
         <div id="map" class="map"></div>
-        <div class="notice first">Double-click on map creates a marker</div>
-        <div class="notice second">Click on a marker to delete it</div>
+        <div>Double-click on map creates a marker</div>
+        <div>Click on a marker to delete it</div>
+        <div id="showAttribsBtn"><a href="#" style="padding-top: 5%; float: right; text-decoration: underline;">Attributes</a></div>
       {{else}}
         <input type="text" id="mapApi" placeholder="Insert Map API Key (see http://cloudmade.com" value="" />
       {{/if}}
     </div>
   {{/constant}}
 </template>
+
+<template name="mapAttributes">
+  <div id="dialog" title="Basic dialog">
+    <form>
+      <div id="radio">
+        <input type="radio" id="newMedia" name="marker_choice" value="newMedia"><label for="newMedia">New Media Item</label>
+        <input type="radio" id="existMedia" name="marker_choice" value="existMedia" checked="checked"><label for="existMedia">Existing Media Item</label>
+        <input type="radio" id="newNarreme" name="marker_choice" value="newNarreme"><label for="newNarreme">New Narreme</label>
+        <input type="radio" id="existNarreme" name="marker_choice" value="existNarreme"><label for="existNarreme">Existing Narreme</label>
+      </div>
+    </form>
+    <div id="view">
+    {{#if existMedia}}
+      {{#with currentCrisis}}
+      {{> mediaList}}
+      {{/with}}
+    {{/if}}
+    {{#if existNarreme}}
+      {{#with currentCrisis}}
+      {{> narrative}}
+      {{/with}}
+    {{/if}}
+  </div>
+  </div>
+</template>
+
+<template name="mediaList">
+  <div id="list_wrapper">  
+    <form>
+    <input type="submit" id="marker-media-submit" value="Mark Items" class="btn btn-primary"/>
+      <ul style="margin: 2pt;">
+        {{#each media}}
+          {{> mediumOption}}
+        {{/each}}
+      </ul>
+    <input type="submit" id="marker-media-submit" value="Mark Items" class="btn btn-primary"/>
+  </form>
+  </div>
+</template>
+
+<template name="mediumOption">
+    <li class="ui-state-default" style="margin: 2pt; padding-top:2pt;">
+      <input type="checkbox" name="mediumOption" value="{{resource}}">
+      {{#if imageSrc}}
+      <img src="{{resource}}" class="sortImg"></img>
+      {{/if}}
+
+      {{#if videoSrc}}
+      <iframe src="{{resource}}" class="sortImg"></iframe>
+      {{/if}}
+
+      {{#if textSrc}}
+      <div class="medium_html">{{resource}}</div>
+      {{/if}}
+
+      <div class="medium_short_desc">{{shortdesc}}</div>
+
+      {{#if audioSrc}}
+      <a href="{{resource}}">Play the sound</a>
+      {{/if}}
+    </li>
+</template> 

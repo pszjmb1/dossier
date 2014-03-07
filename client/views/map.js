@@ -65,10 +65,19 @@ Template.map.rendered = function() {
 
   // click on the map and will insert the latlng into the markers collection 
    window.map.on('dblclick', function(e) {
-    console.log(e.latlng);
-    return Markers.insert({
+    var marker = Markers.insert({
       latlng: e.latlng
+    }); 
+    Session.set('marker-id', marker);
+
+    var templateName = "mapAttributes";
+    var fragment = Meteor.render( function() {
+      return Template[ templateName ](); 
     });
+    $("#showAttribsBtn").append('<div id="dialog" title="Assign Location to Item"></div>');
+    $( "#dialog" ).dialog({width: 600, height: 600}).append(fragment);
+
+    return marker
   });
 
   // watch the markers collection
@@ -76,6 +85,7 @@ Template.map.rendered = function() {
   return query.observe({
     added: function(mark) {
       var marker;
+
       return marker = L.marker(mark.latlng).addTo(window.map).on('click', function(e) {
         var remove_id;
         remove_id = Markers.findOne({
@@ -106,3 +116,127 @@ Template.map.rendered = function() {
     }
   });
 };
+
+
+
+Template.mapAttributes.helpers({
+  currentCrisis: function() {
+    return Crises.findOne(Session.get('currentCrisisId'));
+  },
+  existMedia: function(){
+    var viewtype = Session.get('markerSelectView');
+    if(viewtype == 'existMedia'){
+      return viewtype;
+    } else{
+      return false;
+    }
+  },
+  existNarreme: function(){
+    var viewtype = Session.get('markerSelectView');
+    if(viewtype == 'existNarreme'){
+      return viewtype;
+    } else{
+      return false;
+    }
+  }
+});
+
+ Template.mapAttributes.events({
+  'click :radio': function(event, template) {
+    var element = template.find('input:radio[name=marker_choice]:checked');
+    Session.set('markerSelectView', $(element).val());
+  }
+});
+ Template.mediaList.helpers({
+  media: function() {
+    currentCrisis = Crises.findOne(Session.get('currentCrisisId'));     
+    return currentCrisis.dossier.media.sort(function(a,b){ return a.order - b.order})
+  }
+});
+
+Template.mediumOption.helpers({
+  imageSrc: function() {
+    mediatype = getMediatype(this);
+    if (mediatype == 'image/jpeg' || mediatype == 'image/png' || mediatype == 'image/gif'){
+      return mediatype;
+    }
+  },
+  videoSrc: function() {
+    mediatype = getMediatype(this);
+    if (mediatype == 'video/fla' || mediatype == 'video/flv'){
+     return mediatype;
+   }
+ },
+ textSrc: function() {
+  mediatype = getMediatype(this);
+  if (mediatype == 'text/html'){
+   return mediatype;
+ }
+},
+audioSrc: function() {
+  mediatype = getMediatype(this);
+  if (mediatype == 'audio/mpeg' || mediatype == 'audio/ogg' || mediatype == 'audio/wav' ){
+   return mediatype;
+ }
+}
+});
+/**
+ *  Returns a resource from a Media object if it can find one.
+ */
+ function getResource(context){
+  item = Media.findOne({resource:""+context.resource});
+  if(item){
+    return item.resource;
+  } else{
+    return null;
+  }
+}
+
+/**
+ *  Returns a mediatype from a Media object if it can find one.
+ */
+ function getMediatype(context){
+  item = Media.findOne({resource:""+context.resource});
+  if(item){
+    return item.mediatype;
+  } else{
+    return null;
+  }
+}
+
+
+/**
+ * Returns the resource from the corresponding Media object to "this"
+ */
+ Template.mediumOption.resource = function () {
+  return getResource(this);
+};
+
+/**
+ * Returns the short description attribute of the "this" medium
+ */
+ Template.mediumOption.shortdesc = function () {
+  item = Media.findOne({resource:""+this.resource});
+  if(item && item.attributes){
+    //console.log(item.attributes);
+    var res = $.grep(item.attributes, function(e){return e.shortdesc});
+    //If there is one or multiple short descriptions, use the first one
+    if(res[0]){
+      return res[0].shortdesc;
+    }
+  }
+};
+
+Template.mediaList.events({
+  'submit form': function(e) {
+    e.preventDefault();
+    $('.ui-state-default :checked').each(function() {
+      var resource = $(this).val();    
+      var pushModifier = { $push: {} };
+      pushModifier.$push = {attributes: {}};
+      pushModifier.$push.attributes['marker-id']=Session.get('marker-id');
+      res = Media.findOne({'resource': resource});
+      Media.update( {_id: res._id}, pushModifier);
+    });
+  }
+});
