@@ -68,38 +68,51 @@
     });
 
 
-Media.insert({
-  resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
-  mediatype: 'image/jpeg',
-  provenance:insertProv(),
-    attributes:[{shortdesc:'Once upon a time there was a man named Ian Tomlinson.'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
-  });
+  Media.insert({
+    resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
+    mediatype: 'image/jpeg',
+    provenance:insertProv(),
+      attributes:[{shortdesc:'Once upon a time there was a man named Ian Tomlinson.'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
+    });
 
-Media.insert({
-  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg',
-  mediatype: 'image/jpeg',
-  provenance:insertProv(),
-    attributes:[] // using denormalised version for convinience    
-  });
+  Media.insert({
+    resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg',
+    mediatype: 'image/jpeg',
+    provenance:insertProv(),
+      attributes:[] // using denormalised version for convinience    
+    });
 
-Media.insert({
-  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_as_he_fell_2.jpg',
-  mediatype: 'image/jpeg',
-  provenance:insertProv(),
-    attributes:[] // using denormalised version for convinience    
-  });
+  Media.insert({
+    resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_as_he_fell_2.jpg',
+    mediatype: 'image/jpeg',
+    provenance:insertProv(),
+      attributes:[] // using denormalised version for convinience    
+    });
 
-Media.insert({
-  resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg',
-  mediatype: 'image/jpeg',
-  provenance:insertProv(),
-    attributes:[] // using denormalised version for convinience   
-  });
+  Media.insert({
+    resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian_Tomlinson_38926c.jpg',
+    mediatype: 'image/jpeg',
+    provenance:insertProv(),
+      attributes:[] // using denormalised version for convinience   
+    });
 
-Media.insert({
-  resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg',
-  mediatype: 'image/jpeg',
-  provenance:insertProv(),
-    attributes:[] // using denormalised version for convinience     
+  Media.insert({
+    resource: 'http://timestreams.org/wp-content/uploads/2013/12/ian-Tomlinson3.jpg',
+    mediatype: 'image/jpeg',
+    provenance:insertProv(),
+      attributes:[] // using denormalised version for convinience     
+    });
+
+
+  HORZ_MAJREP_Properties.insert({
+    userId:'Default',
+    //mapapiKey: '...',
+    //Origin of map = Horizon ;)
+    mapOriginLat:52.95195397175029,
+    mapOriginLon:-1.1837467644363642,
+    mapOriginLevel:13,
+    mapStyle: 997, //CloudMade's "Fresh" design
+    mapAttribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+    mapProvider: 'CloudMade'
   });
 }

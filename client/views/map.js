@@ -1,5 +1,6 @@
 // Based on github.com/bevanhunt/meteor-leaflet-demo
 Meteor.subscribe('markers')
+Meteor.subscribe('horz_majrep_app_properties')
 
 // resize the layout
 window.resize = function(t){
@@ -8,6 +9,29 @@ window.resize = function(t){
   t.find('#mapcontainer').style.width = "#{w}px"
   t.find('#map').style.height = "#{h}px"
 };
+
+Template.map.helpers({
+  mapApiKey: function(){
+    settings = HORZ_MAJREP_Properties.findOne({userId: {$in: [this.userId, 'Default']}});
+    if(!settings.mapapiKey){
+      return false;
+    } else{
+      return true;
+    }
+  }
+});
+
+// Attach events to keydown, keyup, and blur on "New crisis" input box.
+Template.map.events(okCancelEvents(
+  '#mapApi',
+  {
+    ok: function (text, evt) {
+      settings = HORZ_MAJREP_Properties.findOne({userId: {$in: [this.userId, 'Default']}});
+      HORZ_MAJREP_Properties.update( {_id: settings._id}, { $set: {'mapapiKey': text}});
+      evt.target.value = "";
+      Meteor.Router.to('/');
+    }
+  }));
   
 Template.map.rendered = function() {
   // resize on load
@@ -22,16 +46,21 @@ Template.map.rendered = function() {
   // create default image path
   L.Icon.Default.imagePath = '../packages/leaflet/images';
 
+  settings = HORZ_MAJREP_Properties.findOne({userId: {$in: [this.userId, 'Default']}});
+  if(!settings.mapapiKey){
+    return 'Please enter a map api key. You can get one from http://cloudmade.com.' ;
+  }
+
   // create a map in the map div, set the view to a given place and zoom
   window.map = L.map('map', {
     doubleClickZoom: false
-  }).setView([52.95195397175029, -1.1837467644363642], 13);
+  }).setView([settings.mapOriginLat, settings.mapOriginLon], settings.mapOriginLevel); 
 
-  // add a CloudMade tile layer with style #997
-  L.tileLayer.provider('CloudMade', {
-    apiKey: 'ccb330aa97f84031b4489de329ca8da3',
-    styleID: '997',
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+  // add a CloudMade tile layer
+  L.tileLayer.provider(settings.mapProvider, {
+    apiKey: settings.mapapiKey,
+    styleID: settings.mapStyle, 
+    attribution: settings.mapAttribution
   }).addTo(window.map);
 
   // click on the map and will insert the latlng into the markers collection 
