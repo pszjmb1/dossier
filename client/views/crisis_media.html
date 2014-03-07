@@ -21,7 +21,9 @@
       {{/with}}
     {{/if}}
     {{#if mapview}}
-      <h1>Map view</h1>
+      {{#with currentCrisis}}
+        {{> map}}
+      {{/with}}
     {{/if}}
     {{#if timelineview}}
       {{#with currentCrisis}}
