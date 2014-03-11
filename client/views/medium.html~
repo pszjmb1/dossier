@@ -1,20 +1,58 @@
 <template name="medium">
   <li class="ui-state-default" id="{{resource}}">
     {{#if imageSrc}}
-      <img src="{{resource}}" width="98%" height="98%"></img>
+    <img src="{{resource}}" class="sortImg"></img>
     {{/if}}
 
     {{#if videoSrc}}
-      <iframe src="{{resource}}" width="98%" height="98%"></iframe>
+    <iframe src="{{resource}}" class="sortImg"></iframe>
     {{/if}}
 
-   {{#if textSrc}}
-     {{resource}}
-   {{/if}}
+    {{#if textSrc}}
+    <div class="medium_html">{{resource}}</div>
+    {{/if}}
 
-   {{#if audioSrc}}
-      <a href="{{resource}}">Play the sound</a>
-   {{/if}}
- 
+    <div class="medium_short_desc">{{shortdesc}}</div>
+
+    <div id="showAttribsBtn">
+      <a href="#" style="padding-top: 5%; float: right; text-decoration: underline;">Attributes</a>      
+      <!--<input type="button" value="Attributes" class="btn btn-secondary" style="float: right;"/>-->
+      
+    </div>
+
+    {{#if audioSrc}}
+    <a href="{{resource}}">Play the sound</a>
+    {{/if}}
+
   </li>
 </template> 
+
+<template name="attributes">
+  <div id="createAttrib">
+      <input type="text" id="new-attrib-type" placeholder="+ Attribute type..." />
+      <input type="text" id="new-attrib-value" placeholder="+ Attribute value..." />
+      <input type="submit" id="new-attrib-submit" value="Add Attribute" class="btn btn-secondary"/>
+  </div>
+  <table class="attrib-table">
+      <tr>
+        <th>Type</th>
+        <th>Value</th>
+      </tr>
+    {{#if loading}}
+      <!--Replace with spinner-->
+      <div id="attribs">Loading...</div>
+    {{else}}
+      {{#each attributes}}
+        {{> attribute}}
+      {{/each}}
+      </table>
+  {{/if}}
+</template>
+
+<template name="attribute">
+      <tr>
+        <td>{{type}}</td>
+        <td>{{value}}</td>
+      </tr>
+</template>
+
