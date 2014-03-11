@@ -4,7 +4,8 @@
     "basePackages": {
       "router": {},
       "jquery-ui-bootstrap": {},
-      "timeline-js": {}
+      "timeline-js": {},
+      "leaflet": {}
     },
     "packages": {
       "router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/andrei-miulescu/timeline-js.git",
         "tag": "v0.0.7",
         "commit": "50a695ecbcf0d79e731ac77e53447537e430febb"
+      },
+      "leaflet": {
+        "git": "https://github.com/bevanhunt/meteor-leaflet.git",
+        "tag": "v0.3.6",
+        "commit": "d9e3bdb824145c1078e52945909bb1cf38724da5"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

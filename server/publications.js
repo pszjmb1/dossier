@@ -22,3 +22,19 @@ Meteor.publish('media', function() {
 Meteor.publish('provenance', function() {
   return Provenance.find();
 });
+
+
+/**
+ * For now publish all Markers info
+ */
+Meteor.publish('markers', function(){
+  return Markers.find();
+});
+
+
+/**
+ * For now publish all Application Properties info
+ */
+Meteor.publish('horz_majrep_app_properties', function(){
+  return HORZ_MAJREP_Properties.find();
+});
