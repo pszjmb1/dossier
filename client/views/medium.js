@@ -41,8 +41,10 @@
   if(item && item.attributes){
     //console.log(item.attributes);
     var res = $.grep(item.attributes, function(e){return e.shortdesc});
+    
     //If there is one or multiple short descriptions, use the first one
     if(res[0]){
+     
       return res[0].shortdesc;
     }
   }
@@ -97,6 +99,7 @@ Template.attribute.value = function () {
 
     var type = $('#new-attrib-type').val();
     var val = $('#new-attrib-value').val();
+    console.log(val);
     var pushModifier = { $push: {} };
     pushModifier.$push = {attributes: {}};
     pushModifier.$push.attributes[''+type]=val;

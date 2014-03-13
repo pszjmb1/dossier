@@ -68,12 +68,26 @@
     });
 
 
+Media.insert({
+  resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
+  mediatype: 'image/jpeg',
+  headline: 'Ian-Tomlinson',
+  startDate : '0,0,0,4,20,3',
+  endDate : "0,0,0,4,20,3",
+  text :"<i><span class='c1'>Public</span> & <span class='c2'>Victim</span></i>",
+  asset:[{media:'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg'}, {credit:''},  {caption:''}],
+  date:[{startDate:'0,0,0,5,2,3'},{endDate:'0,0,0,5,2,3'},{headline:'My first experiment in time-lapse photography'},{text:'Nature at its finest in this video.'},{asset:[{media:'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg', credit:'',caption:''}]}],
+  provenance:insertProv(),
+    attributes:[{shortdesc:'Once upon a time there was a man named Ian Tomlinson.'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
+  });
+
   Media.insert({
     resource: 'http://timestreams.org/wp-content/uploads/2013/12/CR_027316.jpg',
     mediatype: 'image/jpeg',
     provenance:insertProv(),
       attributes:[{shortdesc:'Once upon a time there was a man named Ian Tomlinson.'},{author:'Joe Bloggs'},{time:'12:42pm GMT'}] // using denormalised version for convinience
     });
+
 
   Media.insert({
     resource: 'http://timestreams.org/wp-content/uploads/2013/12/Ian-Tomlinson-at-7.08pm-o-001.jpg',
