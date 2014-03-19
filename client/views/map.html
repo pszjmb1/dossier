@@ -41,20 +41,23 @@
 <template name="mediaList">
   <div id="list_wrapper">  
     <form>
-    <input type="submit" id="marker-media-submit" value="Mark Items" class="btn btn-primary"/>
+    <input type="submit" id="marker-media-submit1" value="Mark Items" class="btn btn-primary"/>
       <ul style="margin: 2pt;">
         {{#each media}}
           {{> mediumOption}}
         {{/each}}
       </ul>
-    <input type="submit" id="marker-media-submit" value="Mark Items" class="btn btn-primary"/>
+    <input type="submit" id="marker-media-submit2" value="Mark Items" class="btn btn-primary"/>
   </form>
   </div>
 </template>
 
 <template name="mediumOption">
     <li class="ui-state-default" style="margin: 2pt; padding-top:2pt;">
-      <input type="checkbox" name="mediumOption" value="{{resource}}">
+      {{#if unmappedResource}}
+        <input type="checkbox" name="mediumOption" value="{{resource}}">
+      {{/if}}
+
       {{#if imageSrc}}
       <img src="{{resource}}" class="sortImg"></img>
       {{/if}}

@@ -68,13 +68,14 @@ Template.map.rendered = function() {
     var marker = Markers.insert({
       latlng: e.latlng
     }); 
-    Session.set('marker-id', marker);
+    Session.set('markerId', marker);
+    Session.set('markerSelectView', 'existMedia');
 
     var templateName = "mapAttributes";
     var fragment = Meteor.render( function() {
       return Template[ templateName ](); 
     });
-    $("#showAttribsBtn").append('<div id="dialog" title="Assign Location to Item"></div>');
+    $("#showAttribsBtn").append('<div id="dialog" title="Assign Location to Item: '+e.latlng.lat + "," + +e.latlng.lng + '"></div>');
     $( "#dialog" ).dialog({width: 600, height: 600}).append(fragment);
 
     return marker
@@ -211,6 +212,16 @@ audioSrc: function() {
  Template.mediumOption.resource = function () {
   return getResource(this);
 };
+/**
+ * Returns the resource from the corresponding Media object to "this"
+ */
+ Template.mediumOption.unmappedResource = function () {
+  res = getResource(this);
+  //if(res.attributes.length > 0){
+ //   res.attributes
+ // }
+  return true;
+};
 
 /**
  * Returns the short description attribute of the "this" medium
@@ -230,13 +241,16 @@ audioSrc: function() {
 Template.mediaList.events({
   'submit form': function(e) {
     e.preventDefault();
+    var numMarked = 0;
     $('.ui-state-default :checked').each(function() {
       var resource = $(this).val();    
-      var pushModifier = { $push: {} };
-      pushModifier.$push = {attributes: {}};
-      pushModifier.$push.attributes['marker-id']=Session.get('marker-id');
+      var pushModifier = { $addToSet: {} };
+      pushModifier.$addToSet = {attributes: {}};
+      pushModifier.$addToSet.attributes['markerId']=Session.get('markerId');
       res = Media.findOne({'resource': resource});
       Media.update( {_id: res._id}, pushModifier);
+      numMarked++;
     });
+    alert(numMarked + " items marked");
   }
 });
