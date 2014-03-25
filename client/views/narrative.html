@@ -1,8 +1,17 @@
 <template name="narrative">
   <div id="narrative">
+    <div id="radio">
+      <input type="radio" id="addNarreme" name="narremeFunction"><label for="addNarreme">+</label>
+      <input type="radio" id="removeNarreme" name="narremeFunction"><label for="removeNarreme">-</label>
+      <input type="radio" id="editNarreme" name="narremeFunction"><label for="editNarreme">Edit</label>
+      <input type="radio" id="selectNarreme" name="narremeFunction" ><label for="selectNarreme">Select</label>
+      <input type="radio" id="linkNarreme" name="narremeFunction"><label for="linkNarreme">Link</label>
+      <input type="radio" id="delinkNarreme" name="narremeFunction"><label for="delinkNarreme">Remove Link</label>
+    </div>
+  <div id="narrativegraph"></div>
   {{#constant}}
-    {{#each naremes}}
-      {{> nareme}}
+    {{#each narremes}}
+      {{> narreme}}
     {{/each}}
   {{/constant}}
   </div>

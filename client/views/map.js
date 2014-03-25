@@ -7,7 +7,9 @@ window.resize = function(t){
   var w = window.innerWidth
   var h = window.innerHeight
   t.find('#mapcontainer').style.width = "#{w}px"
-  t.find('#map').style.height = "#{h}px"
+  if(null != t.find('#map')){
+    t.find('#map').style.height = "#{h}px"
+  }
 };
 
 Template.map.helpers({
@@ -65,7 +67,7 @@ Template.map.rendered = function() {
 
   // click on the map and will insert the latlng into the markers collection 
    window.map.on('dblclick', function(e) {
-    var marker = Markers.insert({
+    var marker = Markers.insert({  
       latlng: e.latlng
     }); 
     Session.set('markerId', marker);
@@ -104,9 +106,10 @@ Template.map.rendered = function() {
       for (key in layers) {
         val = layers[key];
         if (!val._latlng) {
-
+          //ignore
         } else {
           if (val._latlng.lat === mark.latlng.lat && val._latlng.lng === mark.latlng.lng) {
+            console.log(mark);
             _results.push(window.map.removeLayer(val));
           } else {
             _results.push(void 0);

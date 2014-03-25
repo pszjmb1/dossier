@@ -6,6 +6,10 @@ Meteor.startup(function(){
   Session.set('reportview', 'media');
 });
 
+ Template.crisisMedia.rendered = function(){
+    $("#radio").buttonset();
+};
+
 Template.crisisMedia.helpers({
   currentCrisis: function() {
     return Crises.findOne(Session.get('currentCrisisId'));
